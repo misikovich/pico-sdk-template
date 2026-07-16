@@ -1,0 +1,52 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "pico2-clang-base",
+      "hidden": true,
+      "generator": "Ninja",
+      "cacheVariables": {
+        "PICO_SDK_PATH": "${sourceDir}/pico-sdk",
+        "PICO_TOOLCHAIN_PATH": "${sourceDir}/toolchains/ATfE-22.1.0-Linux-x86_64",
+        "PICO_BOARD": "pico2",
+        "PICO_PLATFORM": "rp2350-arm-s",
+        "PICO_COMPILER": "pico_arm_cortex_m33_clang"
+      }
+    },
+    {
+      "name": "pico2-clang-debug",
+      "displayName": "Pico 2 — Clang Debug",
+      "inherits": "pico2-clang-base",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "pico2-clang-release",
+      "displayName": "Pico 2 — Clang Release",
+      "inherits": "pico2-clang-base",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "pico2-clang-debug",
+      "configurePreset": "pico2-clang-debug"
+    },
+    {
+      "name": "pico2-clang-release",
+      "configurePreset": "pico2-clang-release"
+    }
+  ]
+}
