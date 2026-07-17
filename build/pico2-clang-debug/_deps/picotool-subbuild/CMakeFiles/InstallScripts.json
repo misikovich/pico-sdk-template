@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/ss1/Projects/example-pico-project-rp2350/build/pico2-clang-debug/_deps/picotool-subbuild/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

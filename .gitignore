@@ -11,3 +11,5 @@ desktop.ini
 .idea/
 *.swp
 *~
+
+build/
