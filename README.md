@@ -30,8 +30,31 @@ The project takes `PICO_SDK_PATH` and the compiler from the environment
 created by the installer. The project name is defined once by `project()` in
 `CMakeLists.txt`; CMake derives the firmware target and output names from it.
 
+Building in terminal:
 ```sh
 source ~/.pico-sdk/env.sh
 cmake --preset pico2-debug
 cmake --build --preset pico2-debug
 ```
+Building in VS Code:
+  1. Ctrl+Shift+P → CMake: Select Configure Preset
+  2. Choose Pico 2 — Debug or Release
+  3. Ctrl+Shift+B → CMake: build
+
+
+## FreeRTOS
+
+The firmware is built on FreeRTOS (SMP kernel port for RP2xxx, both cores).
+The kernel sources are expected in `lib/FreeRTOS-Kernel` (git-ignored); fetch
+them once with:
+
+```sh
+git clone --depth 1 --branch V11.3.0 https://github.com/FreeRTOS/FreeRTOS-Kernel.git lib/FreeRTOS-Kernel
+git -C lib/FreeRTOS-Kernel submodule update --init --depth 1 portable/ThirdParty/Community-Supported-Ports
+```
+
+A different checkout can be used instead via the `FREERTOS_KERNEL_PATH`
+environment variable or `-DFREERTOS_KERNEL_PATH=...`.
+
+The kernel configuration lives in `src/FreeRTOSConfig.h`. `src/main.c`
+contains a minimal blink task to start from.

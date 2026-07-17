@@ -4,6 +4,9 @@
 # CMake build directories
 build/
 
+# Vendored dependencies (see README "FreeRTOS" section)
+lib/FreeRTOS-Kernel/
+
 # OS junk
 .DS_Store
 Thumbs.db

@@ -17,6 +17,27 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 pico_sdk_init()
 
+# FreeRTOS kernel (SMP port for RP2xxx). The location defaults to the vendored
+# copy in lib/FreeRTOS-Kernel; override with -DFREERTOS_KERNEL_PATH=... or the
+# FREERTOS_KERNEL_PATH environment variable.
+if (NOT FREERTOS_KERNEL_PATH AND DEFINED ENV{FREERTOS_KERNEL_PATH})
+    set(FREERTOS_KERNEL_PATH $ENV{FREERTOS_KERNEL_PATH})
+endif ()
+if (NOT FREERTOS_KERNEL_PATH)
+    set(FREERTOS_KERNEL_PATH ${CMAKE_CURRENT_LIST_DIR}/lib/FreeRTOS-Kernel)
+endif ()
+if (NOT EXISTS ${FREERTOS_KERNEL_PATH}/portable)
+    message(FATAL_ERROR
+        "FreeRTOS-Kernel not found at '${FREERTOS_KERNEL_PATH}'.\n"
+        "Fetch it with:\n"
+        "  git clone --depth 1 --branch V11.3.0 https://github.com/FreeRTOS/FreeRTOS-Kernel.git lib/FreeRTOS-Kernel\n"
+        "  git -C lib/FreeRTOS-Kernel submodule update --init --depth 1 portable/ThirdParty/Community-Supported-Ports")
+endif ()
+
+# FreeRTOSConfig.h lives in src/.
+set(FREERTOS_CONFIG_FILE_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/src)
+include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_import.cmake)
+
 add_executable(
     ${PROJECT_NAME}
     src/main.c
@@ -24,7 +45,10 @@ add_executable(
 
 target_link_libraries(
     ${PROJECT_NAME}
-    PRIVATE pico_stdlib
+    PRIVATE
+        pico_stdlib
+        FreeRTOS-Kernel
+        FreeRTOS-Kernel-Heap4
 )
 
 set_source_files_properties(
