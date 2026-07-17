@@ -1,3 +1,0 @@
-/home/ss1/Projects/example-pico-project-rp2350/build/pico2-clang-debug/_deps/picotool-subbuild/CMakeFiles/picotool-populate.dir
-/home/ss1/Projects/example-pico-project-rp2350/build/pico2-clang-debug/_deps/picotool-subbuild/CMakeFiles/edit_cache.dir
-/home/ss1/Projects/example-pico-project-rp2350/build/pico2-clang-debug/_deps/picotool-subbuild/CMakeFiles/rebuild_cache.dir

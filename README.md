@@ -23,3 +23,15 @@ git checkout main
 ```
 
 Run `./install.sh --help` for options (`--check`, `--with-picotool`, `--with-openocd`) and version overrides.
+
+## Building
+
+The project takes `PICO_SDK_PATH` and the compiler from the environment
+created by the installer. The project name is defined once by `project()` in
+`CMakeLists.txt`; CMake derives the firmware target and output names from it.
+
+```sh
+source ~/.pico-sdk/env.sh
+cmake --preset pico2-debug
+cmake --build --preset pico2-debug
+```

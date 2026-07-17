@@ -1,6 +1,9 @@
 # AI assistant local files
 .claude/
 
+# CMake build directories
+build/
+
 # OS junk
 .DS_Store
 Thumbs.db
