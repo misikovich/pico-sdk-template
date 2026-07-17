@@ -1,0 +1,35 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0        0     1 . = ORIGIN(SRAM)
+       0        0       a4     4 .text
+       0        0        0     1         _start = .
+       0        0       a4     4         pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/compile_time_choice.S.o:(.text)
+       0        0        0     1                 $t
+       1        1        0     1                 _stage2_boot
+       2        2        0     1                 _pad_config
+      1a       1a        0     1                 program_sregs
+      5a       5a        0     1                 _skip_sreg_programming
+      60       60        0     1                 _qmi_config
+      7c       7c        0     1                 wait_qmi_ready
+      85       85        0     1                 read_flash_sreg
+      94       94        0     1                 $d
+      94       94        0     1                 literals
+       0        0       2e     1 .ARM.attributes
+       0        0       2e     1         pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/compile_time_choice.S.o:(.ARM.attributes)
+       0        0      1ad     1 .debug_info
+       0        0      1ad     1         pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/compile_time_choice.S.o:(.debug_info)
+       0        0       21     1 .debug_abbrev
+       0        0       21     1         pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/compile_time_choice.S.o:(.debug_abbrev)
+       0        0       20     1 .debug_aranges
+       0        0       20     1         pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/compile_time_choice.S.o:(.debug_aranges)
+       0        0       a7     1 .debug_line
+       0        0       a7     1         pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/compile_time_choice.S.o:(.debug_line)
+       0        0      1a8     1 .debug_line_str
+       0        0      1a8     1         <internal>:(.debug_line_str)
+       0        0       13     1 .comment
+       0        0       13     1         <internal>:(.comment)
+       0        0       c0     4 .symtab
+       0        0       c0     4         <internal>:(.symtab)
+       0        0       7f     1 .shstrtab
+       0        0       7f     1         <internal>:(.shstrtab)
+       0        0       80     1 .strtab
+       0        0       80     1         <internal>:(.strtab)
